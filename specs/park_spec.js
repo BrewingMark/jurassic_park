@@ -5,17 +5,17 @@ const Dinosaur = require('../models/dinosaur.js');
 describe('Park', function() {
 
   beforeEach(function () {
-    park = new Park('Jurassic Park', 30)
+    park = new Park('Jurassic Park', 30);
   })
 
   it('should have a name', function(){
     const actual = park.name;
-    assert.strictEqual(actual, 'Jurassic Park')
+    assert.strictEqual(actual, 'Jurassic Park');
   });
 
   it('should have a ticket price', function(){
     const actual = park.ticketPrice;
-    assert.strictEqual(actual, 30)
+    assert.strictEqual(actual, 30);
   });
 
   describe('dinosaurs', function(){
@@ -26,16 +26,21 @@ describe('Park', function() {
 
     it('should have a collection of dinosaurs', function(){
       const actual = park.dinosaurs;
-      assert.deepStrictEqual(actual, [])
+      assert.deepStrictEqual(actual, []);
     });
 
     it('should be able to add a dinosaur to its collection', function(){
-      park.addDinosaur(dinosaur)
+      park.addDinosaur(dinosaur);
       const actual = park.dinosaurs;
       assert.deepStrictEqual(actual, [dinosaur])
     });
 
-    it('should be able to remove a dinosaur from its collection');
+    it('should be able to remove a dinosaur from its collection', function(){
+      park.addDinosaur(dinosaur);
+      park.removeDinosaur(dinosaur);
+      const actual = park.dinosaurs;
+      assert.deepStrictEqual(actual, []);
+    });
 
     it('should be able to find the dinosaur that attracts the most visitors');
 
